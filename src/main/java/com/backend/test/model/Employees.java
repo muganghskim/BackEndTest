@@ -1,11 +1,16 @@
 package com.backend.test.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "employees")
 public class Employees {
     @Id
