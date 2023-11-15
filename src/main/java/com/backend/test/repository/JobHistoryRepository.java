@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface JobHistoryRepository extends JpaRepository<JobHistory, JobHistoryId> {
-    List<JobHistory> findByIdEmployeesEmployeesId(int employeeId);
+    List<JobHistory> findByIdEmployeesEmployeeId(int employeeId);
 }

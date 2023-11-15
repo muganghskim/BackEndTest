@@ -14,6 +14,6 @@ public class JobHistoryService {
     private JobHistoryRepository jobHistoryRepository;
 
     public List<JobHistory> getJobHistoryByEmployeeId(int employeeId) {
-        return jobHistoryRepository.findByIdEmployeesEmployeesId(employeeId);
+        return jobHistoryRepository.findByIdEmployeesEmployeeId(employeeId);
     }
 }

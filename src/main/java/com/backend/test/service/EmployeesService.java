@@ -14,7 +14,13 @@ public class EmployeesService {
     private EmployeesRepository employeesRepository;
 
     public Optional<Employees> getEmployeeById(int id) {
-        return employeesRepository.findById(id);
+        try {
+            return employeesRepository.findById(id);
+        } catch (Exception e) {
+            // 로그에 에러 기록
+            // 예: log.error("사원 조회 중 에러 발생", e);
+            return Optional.empty();
+        }
     }
 
     public void increaseSalary(int departmentId, double percentage) {

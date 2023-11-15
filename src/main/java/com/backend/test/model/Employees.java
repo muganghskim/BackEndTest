@@ -15,8 +15,8 @@ import java.util.Date;
 public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employees_id")
-    private int employeesId;
+    @Column(name = "employee_id")
+    private int employeeId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -28,7 +28,7 @@ public class Employees {
     private String email;
 
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "hire_date")
     private LocalDate hireDate;
