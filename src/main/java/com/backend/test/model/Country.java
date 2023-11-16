@@ -1,8 +1,11 @@
 package com.backend.test.model;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 @Entity
 @Table(name = "countries")
+@NoArgsConstructor
 public class Country {
     @Id
     @Column(name = "country_id")

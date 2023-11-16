@@ -1,6 +1,7 @@
 package com.backend.test.controller;
 
 import com.backend.test.model.Department;
+import com.backend.test.model.DepartmentDTO;
 import com.backend.test.service.DepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,9 +25,12 @@ public class DepartmentController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "부서 및 위치 조회", notes = "특정 부서 및 위치 정보를 조회합니다.")
-    public ResponseEntity<Department> getDepartment(@ApiParam(value = "조회하려는 특정 부서 ID", required = true) @PathVariable int id) {
+    public ResponseEntity<DepartmentDTO> getDepartment(@ApiParam(value = "조회하려는 특정 부서 ID", required = true) @PathVariable int id) {
         Optional<Department> department = departmentService.getDepartmentById(id);
-        return department.map(ResponseEntity::ok)
+        return department
+                .map(dept -> new DepartmentDTO(dept))
+                .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
 }

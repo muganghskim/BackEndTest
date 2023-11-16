@@ -1,8 +1,17 @@
 package com.backend.test.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
+@Getter
 @Table(name = "jobs")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Jobs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +26,5 @@ public class Jobs {
 
     @Column(name = "max_salary")
     private Integer maxSalary;
+
 }

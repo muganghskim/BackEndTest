@@ -2,12 +2,13 @@ package com.backend.test.service;
 
 import com.backend.test.model.Employees;
 import com.backend.test.repository.EmployeesRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @Service
 public class EmployeesService {
     @Autowired
@@ -18,7 +19,7 @@ public class EmployeesService {
             return employeesRepository.findById(id);
         } catch (Exception e) {
             // 로그에 에러 기록
-            // 예: log.error("사원 조회 중 에러 발생", e);
+            log.error("사원 조회 서비스 중 에러 발생", e);
             return Optional.empty();
         }
     }

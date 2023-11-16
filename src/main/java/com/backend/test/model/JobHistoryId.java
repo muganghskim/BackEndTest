@@ -1,15 +1,12 @@
 package com.backend.test.model;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Embeddable
 public class JobHistoryId implements Serializable {
-
+    @MapsId("employeeId")
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employees employees;
@@ -17,5 +14,4 @@ public class JobHistoryId implements Serializable {
     @Column(name = "start_date")
     private LocalDate startDate;
 
-    // getters and setters...
 }

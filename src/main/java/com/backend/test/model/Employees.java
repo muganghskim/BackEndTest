@@ -1,6 +1,11 @@
 package com.backend.test.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +17,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Table(name = "employees")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,25 +39,29 @@ public class Employees {
     @Column(name = "hire_date")
     private LocalDate hireDate;
 
-    @ManyToOne
-    @JoinColumn(name = "job_id", nullable=false)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "jobId", nullable=false)
     private Jobs jobs;
 
     @Column(name = "salary")
     private Integer salary;
 
     @Column(name = "commission_pct")
-    private Integer commission_pct;
+    private Integer commissionPct;
 
     @ManyToOne
-    @JoinColumn(name = "manager_id", nullable=false)
+    @JoinColumn(name = "manager_id")
+    @JsonBackReference
     private Employees manager;
 
     @OneToMany(mappedBy = "manager")
+    @JsonManagedReference
     private List<Employees> subordinates;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id", nullable=false)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "departmentId", nullable=false)
     private Department department;
 
 }
