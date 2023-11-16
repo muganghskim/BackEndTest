@@ -21,7 +21,7 @@ public class WeatherService {
         try {
             String encodedKey = URLEncoder.encode(API_KEY, StandardCharsets.UTF_8.toString());
 
-            String url = WEATHER_API_URL + "?ServiceKey=" + encodedKey + "&dataType=JSON&numOfRows=10&pageNo=1&base_date=" + base_date + "&base_time=" + base_time + "&nx=" + nx + "&ny=" + ny;
+            String url = WEATHER_API_URL + "?ServiceKey=" + encodedKey + "&dataType=XML&numOfRows=10&pageNo=1&base_date=" + base_date + "&base_time=" + base_time + "&nx=" + nx + "&ny=" + ny;
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
